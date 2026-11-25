@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simulador Alugar ou Comprar MRV&amp;CO</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1f2937;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      h1, h2, h3, h4 { color: #111827; margin-top: 1.2em; }
+      h1 { font-size: 24px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+      h2 { font-size: 20px; }
+      h3 { font-size: 17px; }
+      p, li { font-size: 13px; }
+      code { background: #f3f4f6; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+      pre { background: #f3f4f6; padding: 12px; border-radius: 6px; overflow-x: auto; }
+      table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+      th, td { border: 1px solid #e5e7eb; padding: 6px 10px; font-size: 12px; text-align: left; }
+      th { background: #f9fafb; }
+      blockquote { border-left: 4px solid #d1d5db; margin: 12px 0; padding: 4px 12px; color: #4b5563; }
+    </style>
+  </head>
+  <body>
+    <h1>Simulador Alugar ou Comprar MRV&amp;CO</h1>
+    <div id="root"><style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+#root{--mrv-primary:#079d56;--mrv-on-primary:#fdfefe;--mrv-primary-container:#006b3f;--mrv-on-primary-container:#fdfefd;--mrv-primary-muted:#daf0e6;--mrv-primary-subtle:#54bc82;--mrv-secondary:#ff8b22;--mrv-secondary-muted:#fdecdd;--mrv-tertiary:#793f98;--mrv-on-tertiary:#f8f4f9;--mrv-tertiary-muted:#f3e9ff;--mrv-complementary:#f7287c;--mrv-complementary-muted:#ffe6f3;--mrv-success:#38c783;--mrv-success-muted:#e1f7ed;--mrv-on-success-container:#1b6140;--mrv-caution:#ffb81a;--mrv-caution-muted:#fff4dd;--mrv-on-caution-container:#7c590d;--mrv-critical:#e04c36;--mrv-critical-muted:#fdf5f4;--mrv-on-critical-container:#6d251a;--mrv-attention:#ac41d8;--mrv-attention-muted:#f3e3f9;--mrv-background:#edf2f0;--mrv-surface:#ffffff;--mrv-surface-subtle:#f1faf6;--mrv-surface-muted:#f7f5f2;--mrv-on-background:#434645;--mrv-on-surface:#242625;--mrv-outline:#e8e3dd;--mrv-outline-muted:#d9d9d9;--mrv-outline-emphasized:#bfc2c1;--mrv-shadow:0 2px 8px 0 #01170d1f;--mrv-green-deep:#034c2a;--mrv-orange-deep:#ba6519;--mrv-orange-soft:#ffa952;--mrv-canvas:#f8f8f8;display:block;box-sizing:border-box;font-family:'Outfit','Open Sans',Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color:var(--mrv-on-surface);background:var(--mrv-background);padding:24px;}
+#root *:not(svg):not(svg *){all:revert;font-family:inherit;box-sizing:border-box;}
+#root .mrv-top-bar{background:var(--mrv-primary-container);color:#ffffff;font-size:22px;line-height:28px;font-weight:800;padding:14px 20px;border-radius:12px 12px 0 0;letter-spacing:0.5px;}
+#root .mrv-sub-bar{background:var(--mrv-secondary);color:#ffffff;font-size:13px;line-height:18px;font-weight:800;padding:8px 20px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:16px;}
+#root .mrv-params-box{background:var(--mrv-surface);border:1px solid var(--mrv-outline);border-radius:12px;padding:20px;margin-bottom:20px;}
+#root .mrv-params-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;align-items:stretch;}
+#root .mrv-param-card{background:var(--mrv-surface-muted);border:1px solid var(--mrv-outline);border-radius:8px;padding:12px 16px;}
+#root .mrv-param-card--highlight{background:var(--mrv-primary-muted);border:2px solid var(--mrv-primary);box-shadow:var(--mrv-shadow);}
+#root .mrv-param-tag{display:inline-block;background:var(--mrv-secondary);color:#ffffff;font-size:11px;font-weight:800;padding:2px 8px;border-radius:9999px;margin-bottom:6px;text-transform:uppercase;}
+#root .mrv-param-lbl{display:block;font-size:12px;font-weight:700;color:var(--mrv-on-background);margin-bottom:4px;text-transform:uppercase;}
+#root .mrv-param-val{display:block;font-size:18px;font-weight:800;color:var(--mrv-on-surface);}
+#root .mrv-input-wrap{display:flex;align-items:center;gap:6px;background:var(--mrv-surface);border:2px solid var(--mrv-primary);border-radius:6px;padding:6px 10px;margin-top:4px;}
+#root .mrv-input-symbol{font-size:18px;font-weight:800;color:var(--mrv-primary-container);}
+#root .mrv-field-edit{font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:var(--mrv-on-surface);background:transparent;border:none;outline:none;width:100%;}
+#root .mrv-slider-wrap{margin-top:12px;}
+#root .mrv-range-input{width:100%;accent-color:var(--mrv-primary);cursor:pointer;}
+#root .mrv-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+#root .mrv-chip-btn{background:var(--mrv-surface);border:1px solid var(--mrv-outline-emphasized);border-radius:9999px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;}
+#root .mrv-results-banner{display:grid;grid-template-columns:minmax(180px,1fr) minmax(220px,1.5fr) minmax(220px,1.5fr);gap:12px;margin-bottom:20px;}
+#root .mrv-res-title-card{background:var(--mrv-caution-muted);border:1px solid var(--mrv-caution);border-radius:8px;padding:16px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:16px;font-weight:800;color:var(--mrv-on-caution-container);}
+#root .mrv-res-card-rent{background:var(--mrv-critical);color:#ffffff;border-radius:8px;padding:16px 20px;}
+#root .mrv-res-card-buy{background:var(--mrv-primary-container);color:#ffffff;border-radius:8px;padding:16px 20px;}
+#root .mrv-res-lbl{display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:4px;opacity:0.9;}
+#root .mrv-res-val{display:block;font-size:26px;line-height:32px;font-weight:800;letter-spacing:0.5px;}
+#root .mrv-disclaimer-strip{background:var(--mrv-surface);border:1px solid var(--mrv-outline);border-radius:8px;padding:12px 16px;font-size:13px;line-height:20px;font-weight:600;color:var(--mrv-on-surface);margin-bottom:20px;text-align:center;}
+#root .mrv-table-wrap{display:block;overflow-x:auto;border:1px solid var(--mrv-outline);border-radius:8px;background:var(--mrv-surface);margin-bottom:24px;}
+#root .mrv-table{width:100%;border-collapse:collapse;}
+#root .mrv-table th{background:var(--mrv-primary-container);color:#ffffff;font-size:13px;font-weight:700;text-align:left;padding:10px 12px;border:1px solid var(--mrv-primary-container);text-transform:uppercase;}
+#root .mrv-table td{font-size:13px;line-height:18px;font-weight:500;padding:8px 12px;border:1px solid var(--mrv-outline);}
+#root .mrv-td-ano{font-weight:700;text-align:center;background:var(--mrv-surface-subtle);}
+#root .mrv-td-rent{background:var(--mrv-caution-muted);color:var(--mrv-on-caution-container);font-weight:600;text-align:right;}
+#root .mrv-td-buy{background:var(--mrv-success-muted);color:var(--mrv-on-success-container);font-weight:700;}
+#root .mrv-notes-card{background:var(--mrv-surface);border:1px solid var(--mrv-outline);border-radius:8px;padding:20px;}
+#root .mrv-notes-head{background:var(--mrv-primary-container);color:#ffffff;font-size:13px;font-weight:800;padding:8px 12px;border-radius:4px;margin-bottom:14px;text-transform:uppercase;}
+#root .mrv-notes-list{font-size:12px;line-height:18px;color:var(--mrv-on-background);display:flex;flex-direction:column;gap:8px;}
+#root .mrv-notes-list strong{color:var(--mrv-on-surface);}
+body:has(>#root){max-width:none;margin:0;padding:0;background:#edf2f0;}
+body:has(>#root)>h1{display:none;}
+@media (max-width:800px){#root{padding:12px;}#root .mrv-results-banner{grid-template-columns:1fr;}}
+@page{size:A4 landscape;margin:8mm;}
+@media print{#root,#root *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}#root{padding:0;}}
+</style>
+<div class="mrv-top-bar">ALUGAR OU COMPRAR? | SIMULADOR MRV&amp;CO</div>
+<div class="mrv-sub-bar">SIMULAÇÃO ESTIMADA &bull; ÍNDICES VARIÁVEIS &bull; SEM GARANTIA DE RETORNO OU VALORIZAÇÃO FUTURA</div>
+<div class="mrv-params-box">
+<div class="mrv-params-grid">
+<div class="mrv-param-card mrv-param-card--highlight">
+<span class="mrv-param-tag">&#9998; EDITE AQUI O VALOR</span>
+<span class="mrv-param-lbl">Valor do Imóvel</span>
+<div class="mrv-input-wrap">
+<span class="mrv-input-symbol">R$</span>
+<input type="text" id="mrvInputText" class="mrv-field-edit" value="250.000,00" inputmode="numeric">
+</div>
+<div class="mrv-slider-wrap">
+<input type="range" id="mrvRange" class="mrv-range-input" min="100000" max="1500000" step="10000" value="250000">
+<div class="mrv-chips">
+<button type="button" class="mrv-chip-btn" onclick="setV(200000)">R$ 200 mil</button>
+<button type="button" class="mrv-chip-btn" onclick="setV(250000)">R$ 250 mil</button>
+<button type="button" class="mrv-chip-btn" onclick="setV(300000)">R$ 300 mil</button>
+<button type="button" class="mrv-chip-btn" onclick="setV(400000)">R$ 400 mil</button>
+<button type="button" class="mrv-chip-btn" onclick="setV(500000)">R$ 500 mil</button>
+</div>
+</div>
+</div>
+<div class="mrv-param-card">
+<span class="mrv-param-lbl">Aluguel mensal / valor</span>
+<span class="mrv-param-val">0,50%</span>
+</div>
+<div class="mrv-param-card">
+<span class="mrv-param-lbl">Aluguel Inicial (0,5%)</span>
+<span id="pRentInit" class="mrv-param-val">R$ 1.250,00</span>
+</div>
+<div class="mrv-param-card">
+<span class="mrv-param-lbl">IGP-M Anual (Projeção)</span>
+<span class="mrv-param-val">7,82%</span>
+</div>
+<div class="mrv-param-card">
+<span class="mrv-param-lbl">IPCA / Inflação Anual</span>
+<span class="mrv-param-val">6,12%</span>
+</div>
+</div>
+</div>
+<div class="mrv-results-banner">
+<div class="mrv-res-title-card">
+RESULTADO EM 30 ANOS
+</div>
+<div class="mrv-res-card-rent">
+<span class="mrv-res-lbl">Aluguel Total (Sem Patrimônio)</span>
+<span id="resRentTot" class="mrv-res-val">R$ 1.644.148,86</span>
+</div>
+<div class="mrv-res-card-buy">
+<span class="mrv-res-lbl">Valor Final do Imóvel (Patrimônio)</span>
+<span id="resBuyTot" class="mrv-res-val">R$ 1.485.447,30</span>
+</div>
+</div>
+<div class="mrv-disclaimer-strip">
+<strong>ALUGAR:</strong> o aluguel pago não gera propriedade. &nbsp;|&nbsp; <strong>COMPRAR:</strong> patrimônio sujeito às condições de mercado.
+</div>
+<div class="mrv-table-wrap">
+<table class="mrv-table">
+<thead>
+<tr>
+<th>Ano</th>
+<th>Aluguel Mensal</th>
+<th>Aluguel no Ano</th>
+<th>Aluguel Acumulado</th>
+<th>Situação de Posse</th>
+</tr>
+</thead>
+<tbody id="tblBody">
+</tbody>
+</table>
+</div>
+<div class="mrv-notes-card">
+<div class="mrv-notes-head">Premissas, Fontes e Limitações &mdash; Leia Antes de Utilizar</div>
+<div class="mrv-notes-list">
+<div><strong>SIMULAÇÃO ILUSTRATIVA:</strong> os valores não representam promessa, previsão exata ou garantia de retorno ou valorização futura.</div>
+<div><strong>ALUGUEL INICIAL:</strong> 0,5% ao mês do valor do imóvel, referência aproximada do rendimento locatício FipeZAP. Não é média histórica de 30 anos nem taxa uniforme nacional; cada cidade, bairro e imóvel possui particularidades.</div>
+<div><strong>IGP-M:</strong> índice calculado pela FGV. Taxa de 7,82% a.a. usada como premissa de projeção; índices reais variam e reajustes dependem do contrato.</div>
+<div><strong>IPCA:</strong> índice de inflação calculado pelo IBGE. Taxa de 6,12% a.a. usada apenas como hipótese de atualização monetária do valor do imóvel. IPCA não mede preços de imóveis nem garante valorização.</div>
+<div><strong>REFERÊNCIA HISTÓRICA:</strong> taxas anuais indicativas atribuídas ao período 1996&ndash;2025; validar os cálculos nas séries oficiais antes de apresentar como médias históricas verificadas.</div>
+<div><strong>LIMITAÇÕES:</strong> não inclui entrada, financiamento, juros, impostos, condomínio, manutenção, custos de aquisição ou venda. Valorização estimada não equivale a dinheiro recebido.</div>
+</div>
+</div>
+<script>
+function fmt(n){return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+function getVal(){
+var s=document.getElementById('mrvInputText').value.trim();
+if(s.indexOf(',')!==-1){
+var parts=s.split(',');
+var intPart=parts[0].replace(/\D/g,'')||'0';
+var decPart=parts[1].replace(/\D/g,'').substring(0,2);
+if(decPart.length===1){decPart+='0';}
+return parseFloat(intPart+'.'+decPart)||0;
+}
+if(s.indexOf('.')!==-1){
+var pDot=s.split('.');
+if(pDot.length===2&&pDot[1].length<=2){
+var dPart=pDot[1].replace(/\D/g,'');
+if(dPart.length===1){dPart+='0';}
+return parseFloat(pDot[0].replace(/\D/g,'')+'.'+dPart)||0;
+}
+return parseFloat(s.replace(/\D/g,''))||0;
+}
+return parseFloat(s.replace(/\D/g,''))||0;
+}
+function setV(n){
+document.getElementById('mrvInputText').value=n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+document.getElementById('mrvRange').value=Math.round(n);
+calc();
+}
+function calc(){
+var v=getVal();
+var igpm=0.0782;
+var ipca=0.0612;
+var rentM=v*0.005;
+document.getElementById('pRentInit').textContent=fmt(rentM);
+var rentTotal=0;
+var tb=document.getElementById('tblBody');
+tb.innerHTML='';
+for(var y=1;y<=30;y++){
+var annual=rentM*12;
+rentTotal+=annual;
+var tr=document.createElement('tr');
+var tdY=document.createElement('td');
+tdY.className='mrv-td-ano';
+tdY.textContent=y;
+var tdM=document.createElement('td');
+tdM.className='mrv-td-rent';
+tdM.textContent=fmt(rentM);
+var tdA=document.createElement('td');
+tdA.className='mrv-td-rent';
+tdA.textContent=fmt(annual);
+var tdAcc=document.createElement('td');
+tdAcc.className='mrv-td-rent';
+tdAcc.textContent=fmt(rentTotal);
+var tdP=document.createElement('td');
+tdP.className='mrv-td-buy';
+tdP.textContent=y===30?'Imóvel 100% quitado e propriedade do comprador':'Alugado (não gera patrimônio)';
+tr.appendChild(tdY);tr.appendChild(tdM);tr.appendChild(tdA);tr.appendChild(tdAcc);tr.appendChild(tdP);
+tb.appendChild(tr);
+rentM=rentM*(1+igpm);
+}
+var finalPropVal=v*Math.pow(1+ipca,30);
+document.getElementById('resRentTot').textContent=fmt(rentTotal);
+document.getElementById('resBuyTot').textContent=fmt(finalPropVal);
+}
+var txt=document.getElementById('mrvInputText');
+var rng=document.getElementById('mrvRange');
+txt.addEventListener('input',function(){
+var v=getVal();
+rng.value=Math.round(v);
+calc();
+});
+txt.addEventListener('blur',function(){
+var num=getVal();
+if(num<1000){num=1000;}
+txt.value=num.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+rng.value=Math.round(num);
+calc();
+});
+rng.addEventListener('input',function(){
+txt.value=parseFloat(rng.value).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+calc();
+});
+calc();
+</script>
+</div>
+  </body>
+</html>
